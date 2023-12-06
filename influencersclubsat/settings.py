@@ -10,6 +10,26 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+
+## EDIT EMAIL CONFIG BELOW
+EMAIL_HOST = "smtp-mail.outlook.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "notifybotibrkfut@outlook.com" 
+EMAIL_HOST_PASSWORD = "123456abcd...."
+
+#EDIT DATABSE CONFIG BELOW
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sat', 
+        'USER': 'postgres',
+        'PASSWORD': '123456abcd...',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
+    }
+}
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,16 +47,21 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL = "/companies"
 # Application definition
 
 INSTALLED_APPS = [
+            'django_filters',
+    "sat",
+    "rest_framework.authtoken",
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 MIDDLEWARE = [
@@ -73,12 +98,12 @@ WSGI_APPLICATION = 'influencersclubsat.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -121,3 +146,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+        'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
