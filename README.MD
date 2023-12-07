@@ -25,7 +25,7 @@ Add some users to the user model, make sure to include email address
 
 Then navigate to
 
-http://localhost:8000/login
+http://localhost:8000/api-auth/login
 
 Login as one of the users. You will be redirected to /companies.
 
@@ -37,7 +37,9 @@ Open any company at /companies/<id> to see Company detail view with all data abo
 
 Send PATCH/PUT request, only number_of_employees will be updated
 
+Run tests with python manage.py test
+
 #TODOS
-1. Unit tests for the API
+1. Unit tests for the API -- some done already
 2. Put config variables from settings in enviroment .env
 3. Package the app with Docker
