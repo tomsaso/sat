@@ -1,3 +1,9 @@
+This is done as part of a self-assesment task for a job interview
+
+This is the task requirements:
+https://docs.google.com/document/d/10eVNnC_KGOo7oNSZjoWJStDFHMk8mJKTl2mExKCvjJU/edit?usp=sharing
+
+
 
 # CONFIG
 Edit settings.py with Email configuration and database info
